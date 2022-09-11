@@ -12,6 +12,11 @@ let computerChoiceIndex = Math.floor(Math.random()*3);
 return computerChoice = gameSelection[computerChoiceIndex];
 }
 
+
+
+//function to play a single game
+function singleRoundGame (computerChoice,playerChoice) {
+
 //accepts user choice
 playerChoice = prompt("Rock, Paper, or Scissors? ;)", "Rock");
 let firstLetter = playerChoice.charAt(0).toUpperCase();
@@ -20,47 +25,79 @@ playerChoice = firstLetter + remainingLetters;
 
 //invokes function to return computer choice
 getComputerChoice();
-
-//function to play a single game
-function singleRoundGame (computerChoice,playerChoice) {
-
     //computer wins
-    if (playerChoice=="Rock" && computerChoice=="Paper") {
+    if (playerChoice==="Rock" && computerChoice==="Paper") {
         result = "You lose! Rock loses to Paper :P";
         console.log(result);
         computerPoint = ++computerPoint;
     }
-    else if (playerChoice=="Paper" && computerChoice=="Scissors"){
+    else if (playerChoice==="Paper" && computerChoice==="Scissors"){
         result = "You lose! Paper loses to Scissors :P";
         console.log(result);
         computerPoint = ++computerPoint;
     }
-    else if (playerChoice=="Scissors" && computerChoice=="Rock"){
+    else if (playerChoice==="Scissors" && computerChoice==="Rock"){
         result = "You lose! Rock loses to Scissors :P";
         console.log(result);
         computerPoint = ++computerPoint;
     }
 
     //player wins
-    else if (computerChoice=="Rock" && playerChoice=="Paper") {
+    else if (computerChoice==="Rock" && playerChoice==="Paper") {
         result = "You win! Rock loses to Paper :'(";
         console.log(result);
         playerPoint = ++playerPoint;
     }
-    else if (computerChoice=="Paper" && playerChoice=="Scissors"){
+    else if (computerChoice==="Paper" && playerChoice==="Scissors"){
         result = "You win! Paper loses to Scissors :'(";
         console.log(result);
         playerPoint = ++playerPoint;
     }
-    else if (computerChoice=="Scissors" && playerChoice=="Rock"){
+    else if (computerChoice==="Scissors" && playerChoice==="Rock"){
         result = "You win! Rock loses to Scissors :'(";
         console.log(result);
         playerPoint = ++playerPoint;
     }
-    else {
-        result = "Draw! Same choice for both players."
+    else if (computerChoice===playerChoice) {
+        result = "Draw! Same choice for both players.";
+        console.log(result);
     }
-    
+    else {
+        result = "Invalid user input! Please try a valid input!"
+        console.log(result);
+    }
+    return result;
 }
 
-singleRoundGame (computerChoice,playerChoice)
+function game (){
+
+
+    let finalResult;
+
+
+    //to play five rounds
+    for (let i = 0; i < 5; i++) {
+        singleRoundGame (computerChoice,playerChoice);
+     }
+     
+     if (computerPoint>playerPoint) {
+        console.log("You lost the match dumbx2! :P");
+        finalResult = "lost";
+     }
+     else if(computerPoint<playerPoint) {
+        console.log("I lost the match. You are the more superior being :'(");
+        finalResult = "win";
+     }
+     else if (computerPoint === playerPoint){
+        console.log("Draw! I demand a rematch!!")
+        finalResult = "Draw";
+     }
+
+     console.log(computerPoint);
+     console.log(playerPoint);
+     console.log(finalResult);
+     playerPoint = 0;
+     computerPoint = 0;
+     return finalResult;
+     
+}
