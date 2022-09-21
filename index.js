@@ -8,8 +8,8 @@ let computerPoint = 0;
 
 //function that generates computer choice
 function getComputerChoice () {
-let computerChoiceIndex = Math.floor(Math.random()*3);
-return computerChoice = gameSelection[computerChoiceIndex];
+    let computerChoiceIndex = Math.floor(Math.random()*3);
+    return computerChoice = gameSelection[computerChoiceIndex];
 }
 
 
@@ -17,14 +17,15 @@ return computerChoice = gameSelection[computerChoiceIndex];
 //function to play a single game
 function singleRoundGame (computerChoice,playerChoice) {
 
-//accepts user choice
-playerChoice = prompt("Rock, Paper, or Scissors? ;)", "Rock");
-let firstLetter = playerChoice.charAt(0).toUpperCase();
-let remainingLetters = playerChoice.slice(1).toLowerCase();
-playerChoice = firstLetter + remainingLetters;
+    //accepts user choice
+    playerChoice = prompt("Rock, Paper, or Scissors? ;)", "Rock");
+    let firstLetter = playerChoice.charAt(0).toUpperCase();
+    let remainingLetters = playerChoice.slice(1).toLowerCase();
+    playerChoice = firstLetter + remainingLetters;
 
-//invokes function to return computer choice
-getComputerChoice();
+    //invokes function to return computer choice
+    getComputerChoice();
+    
     //computer wins
     if (playerChoice==="Rock" && computerChoice==="Paper") {
         result = "You lose! Rock loses to Paper :P";
@@ -69,35 +70,4 @@ getComputerChoice();
     return result;
 }
 
-function game (){
 
-
-    let finalResult;
-
-
-    //to play five rounds
-    for (let i = 0; i < 5; i++) {
-        singleRoundGame (computerChoice,playerChoice);
-     }
-     
-     if (computerPoint>playerPoint) {
-        console.log("You lost the match dumbx2! :P");
-        finalResult = "lost";
-     }
-     else if(computerPoint<playerPoint) {
-        console.log("I lost the match. You are the more superior being :'(");
-        finalResult = "win";
-     }
-     else if (computerPoint === playerPoint){
-        console.log("Draw! I demand a rematch!!")
-        finalResult = "Draw";
-     }
-
-     console.log(computerPoint);
-     console.log(playerPoint);
-     console.log(finalResult);
-     playerPoint = 0;
-     computerPoint = 0;
-     return finalResult;
-     
-}
