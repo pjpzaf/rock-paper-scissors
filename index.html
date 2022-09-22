@@ -3,11 +3,30 @@
     <head>
         <meta charset="UTF-8">  
         <link rel="stylesheet" href="rps-style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
         <script src="index.js"></script>
     </head>
     <body>
-        <input type="image" src="rock.svg"/>
-        <input type="image" src="paper.svg"/>
-        <input type="image" src="scissors.svg"/>
+
+        <h1 class="header">ROCK PAPER SCISSORS</h1>
+
+        <h2 class="header2">Choose your weapon!</h2>
+
+        <div class="image_section">
+        <input type="image" class = "image" src="rock.svg" style="width: 10%"/>
+        <input type="image" class = "image" src="paper.svg" style="width:10%"/>
+        <input type="image" class = "image" src="scissors.svg" style="width:10%"/>
+        </div>
+
+        <div class="score-section">
+            <div class="container-human">
+                <h1 class="human-choice">?</h1> 
+                <h1 class = "human-score">Human:</h1>
+            </div>
+            <div class="container-computer">
+                <h1 class="computer-choice">?</h1> 
+                <h1 class = "computer-score">Computer:</h1>
+            </div>
+            </div>
     </body>
 </html>
