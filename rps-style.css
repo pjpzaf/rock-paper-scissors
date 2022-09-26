@@ -10,7 +10,7 @@ body {
     height: 100%;
 }
 
-.image_section{
+.button-section{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -19,7 +19,7 @@ body {
 }
 
 
-.image{
+#rock,#paper,#scissors{
     border: 10px solid #002438;
     border-radius: 5px;
 }
@@ -55,7 +55,7 @@ body {
         column-gap: 200px;
     }
 
- .container-human {
+ #container-human, #container-computer {
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -65,34 +65,17 @@ body {
     font-family: 'Roboto';
  }
 
- .human-choice{
-    margin:0;
-    padding:0;
-    font-size: 100px;
- }
-
- .human-score{
-    margin:0;
-    padding:0;
- }
-
- .container-computer {
-    margin: 0;
+ #human-choice, #computer-choice{
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    color: antiquewhite;
-    font-family: 'Roboto';
- }
-
- .computer-choice{
     margin:0;
     padding:0;
     font-size: 100px;
+    height: 100px;
+    width: 100px;
  }
 
- .computer-score{
+ #human-score, #computer-score{
     margin:0;
     padding:0;
  }
