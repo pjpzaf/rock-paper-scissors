@@ -64,38 +64,36 @@ function playerChoiceAnimation (playerChoice) {
 
 //player selects and clicks on rock
 rockChoice = document.getElementById('rock');
-rockChoice.addEventListener('click', function() {
+let rockClick = function(){
     playerChoice = "Rock";
     playerChoiceAnimation(playerChoice);
-    getComputerChoice();
-    singleRoundGame (computerChoice,playerChoice);
-})
+    singleRoundGame (playerChoice);
+}
+rockChoice.addEventListener('click', rockClick );
 
 //player selects and clicks on paper
 paperChoice = document.getElementById('paper');
-paperChoice.addEventListener('click', function() {
+let paperClick = function() {
     playerChoice = "Paper";
     playerChoiceAnimation(playerChoice);
-    getComputerChoice();
-    singleRoundGame (computerChoice,playerChoice);
-    })
+    singleRoundGame (playerChoice);
+    }
+paperChoice.addEventListener('click', paperClick);
 
     //player selects and clicks on rock
 scissorsChoice = document.getElementById('scissors');
-scissorsChoice.addEventListener('click', function() {
+let scissorsClick = function() {
     playerChoice = "Scissors";
     playerChoiceAnimation(playerChoice);
-    getComputerChoice();
-    singleRoundGame (computerChoice,playerChoice);
-    })
+    singleRoundGame (playerChoice);
+    }
+scissorsChoice.addEventListener('click', scissorsClick);
     
 
-
-
-
-
 //plays one round of the game
-function singleRoundGame() {
+function singleRoundGame(playerChoice) {
+
+    getComputerChoice();
     //computer wins
     if (playerChoice==="Rock" && computerChoice==="Paper") {
         computerPoint = ++computerPoint;
@@ -116,25 +114,68 @@ function singleRoundGame() {
     //player wins
     else if (computerChoice==="Rock" && playerChoice==="Paper") {
         playerPoint = ++playerPoint;
-        let computerScore = document.getElementById("human-score");
-        computerScore.textContent = `Human: ${playerPoint}`;
+        let playerScore = document.getElementById("human-score");
+        playerScore.textContent = `Human: ${playerPoint}`;
     }
     else if (computerChoice==="Paper" && playerChoice==="Scissors"){
         playerPoint = ++playerPoint;
-        let computerScore = document.getElementById("human-score");
-        computerScore.textContent = `Human: ${playerPoint}`;
+        let playerScore = document.getElementById("human-score");
+        playerScore.textContent = `Human: ${playerPoint}`;
     }
     else if (computerChoice==="Scissors" && playerChoice==="Rock"){
         playerPoint = ++playerPoint;
-        let computerScore = document.getElementById("human-score");
-        computerScore.textContent = `Human: ${playerPoint}`;
+        let playerScore = document.getElementById("human-score");
+        playerScore.textContent = `Human: ${playerPoint}`;
     }
-    else if (computerChoice===playerChoice) {
-        result = "Draw! Same choice for both players.";
-        console.log(result);
+    // else if (computerChoice===playerChoice) {
+    //     result = "Draw! Same choice for both players.";
+    //     console.log(result);
+    // }
+
+        //when one side reaches five points     
+        if (playerPoint===5 || computerPoint===5) {
+
+            //removes event listener once a side is declared a victor of the match
+            rockChoice.removeEventListener('click',rockClick);
+            paperChoice.removeEventListener('click',paperClick);
+            scissorsChoice.removeEventListener('click',scissorsClick);
+
+        //setTimeout added to ensure choice for computer and player are shown before the alert is displayed
+            setTimeout(function(){
+                if (playerPoint>computerPoint) {
+                alert("You won! You are superior than the mighty computer! Congratulations");
+                }
+                else {
+                alert("You lost! Please bow down to your computer overlord, or die!");
+                }
+                
+                //creates button to refresh page
+                selectBody = document.querySelector('body');
+                let resetGame = document.createElement('button');
+                let buttonText = document.createTextNode("Play Again?");
+                resetGame.style.width = "auto";
+                resetGame.style.alignSelf = "center";
+                resetGame.style.fontSize = "50px";
+                resetGame.style.fontFamily = "'Press Start 2P'";
+                resetGame.style.color = "antiquewhite";
+                resetGame.style.borderRadius = "10px";
+                resetGame.style.borderWidth = "15px";
+                resetGame.style.borderColor = "#060c25";
+                resetGame.style.backgroundColor = "#060c25";
+                resetGame.appendChild(buttonText);
+                selectBody.appendChild(resetGame);
+
+                resetGame.addEventListener('click', function () {
+                    location.reload()
+                });
+
+            },500);
+
+        }
+
+
     }
-    return result;
-}
+
 
 
 
